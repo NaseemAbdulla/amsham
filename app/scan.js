@@ -10,19 +10,6 @@ export default function Scan(){
 
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const pickImageAsync = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
-      quality: 1,
-    });
-
-    if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri);
-    } else {
-      alert("You did not select any image.");
-    }
-  };
-
   
   const openCamera = async () => {
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
@@ -36,6 +23,24 @@ export default function Scan(){
         allowsEditing:true,
         quality:1,
     });
+
+    const pickImageAsync = async () => {
+      const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (permissionResult.granted === false) {
+        alert("You've refused to allow this appp to access your camera!");
+        return;
+      }
+      let result = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        quality: 1,
+      });
+  
+      if (!result.canceled) {
+        setSelectedImage(result.assets[0].uri);
+      } else {
+        alert("You did not select any image.");
+      }
+    };
 
     if (!result.canceled) {
         setSelectedImage(result.assets[0].uri);
@@ -53,8 +58,9 @@ export default function Scan(){
         </View>
         <View >
           <TouchableOpacity>
-        <Button color='blue' margin={50} title="Upload" size={40} onPress={pickImageAsync}/>
+        <Button color='blue' margin={50} title="Upload" size={40} onPress={pickImageAsyncs}/>
          </TouchableOpacity>
+        
         
         </View>
         <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage} />

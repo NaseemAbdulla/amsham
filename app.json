@@ -5,6 +5,7 @@
     "slug": "ABcd",
     "version": "47.0.0",
     "orientation": "portrait",
+    "plugins": ["expo-image-picker"],
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -19,17 +20,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.am.sham"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.ashna_gopi.ABcd"
     },
     "web": {
       "bundler": "metro",
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "51543bcb-dc59-4819-a309-2ebbd26dea2e"
+      }
     }
   }
 }
