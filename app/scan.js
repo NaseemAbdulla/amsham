@@ -1,15 +1,14 @@
-import React, { useCallback, useState } from "react";
-import { StyleSheet, Text, View,Button,TouchableOpacity,Image } from 'react-native';
+import React, { useCallback, useState,createContext ,useContext} from "react";
+import { StyleSheet, Text, View,Button,TouchableOpacity,Image ,Link,TextInput} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import ImageViewer from "../src/components/ImageViewer";
-const PlaceholderImage = require('../assets/images/background-image.png');
+import { useRouter } from "expo-router";
+import { useAppCont } from "../src/context/FirstContext";
 
+export default function Scan({children}){
 
-export default function Scan(){
-
-
-  const [selectedImage, setSelectedImage] = useState(null);
-
+ 
+  const router = useRouter();
+  const {setSelectedImage}=useAppCont();
   
   const openCamera = async () => {
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
@@ -23,6 +22,13 @@ export default function Scan(){
         allowsEditing:true,
         quality:1,
     });
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+      router.push("/display");
+    } else {
+      alert("You did not take any image.");
+    }
+  };
 
     const pickImageAsync = async () => {
       const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -42,32 +48,21 @@ export default function Scan(){
       }
     };
 
-    if (!result.canceled) {
-        setSelectedImage(result.assets[0].uri);
-      } else {
-        alert("You did not take any image.");
-      }
-  }
-
   return(
      <View alignItems='center' style={{marginTop:130}} >
         <View style={{marginBottom:5, margin:150}}>
-          <TouchableOpacity >
+          <TouchableOpacity>
           <Button color='blue' margin={50} title="Scan" size={40} onPress={openCamera}/>
-          </TouchableOpacity>
+          </TouchableOpacity>   
         </View>
         <View >
           <TouchableOpacity>
-        <Button color='blue' margin={50} title="Upload" size={40} onPress={pickImageAsyncs}/>
+        <Button color='blue' margin={50} title="Upload" size={40} onPress={pickImageAsync}/>
          </TouchableOpacity>
-        
-        
         </View>
-        <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage} />
          </View> 
     );
-}
-
+  }
 
 const styles = StyleSheet.create({
     container: {

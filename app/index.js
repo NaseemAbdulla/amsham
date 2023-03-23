@@ -8,7 +8,11 @@ import AnimatedSplash from "react-native-animated-splash-screen";
 
 export default function Home() {
 
+
+
   const [loading, setLoading] = useState(false);
+  
+
   
     setTimeout(() => {
       setLoading(true);
