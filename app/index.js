@@ -1,38 +1,94 @@
-import { Text, View,StyleSheet } from 'react-native';
-import React, { useState } from "react";
-import { StatusBar } from 'expo-status-bar';
-import { Link } from 'expo-router';
-import { AppBar } from '@react-native-material/core';
+import React,{ useState } from 'react'
+import { Text, View } from 'react-native'
+import * as tf from '@tensorflow/tfjs'
+import { bundleResourceIO } from '@tensorflow/tfjs-react-native';
+import { useAppCont } from "../src/context/FirstContext";
+import Anime from './splash';
+import { Asset } from 'expo-asset';
 import Scan from './scan';
-import AnimatedSplash from "react-native-animated-splash-screen";
+import Displays from './display';
+const BACKEND_CONFIG = 'cpu';
 
-export default function Home() {
+class App extends React.Component {
 
+  // state = {
+  //   isTfReady: false
+  // }
 
+//   constructor(prop){
+//     super(prop);
+//     this.state = {
+//         isModelReady: false,
+//         useModel: {}
+//     }; 
+// };
+// // function App(){
+//    async componentDidMount() {
+//      await tf.ready();
+//      await tf.setBackend(BACKEND_CONFIG);
 
-  const [loading, setLoading] = useState(false);
+     
+
+//      console.log("componentDidMount: tf.ready is set");
+
+   
+
+//     //  {
+//     //   weightUrlConverter : async (weightFileName) => {
+//     //         return `file://${RNFS.DocumentDirectoryPath}/${weightFileName}`;
+//     // }}
+   
+     
+   
+//      const modelJSON = require('../assets/model/model.json');
+//      const modelWeights = require('../assets/model/group1-shard1of1.bin');
+//      model = await tf.loadGraphModel(bundleResourceIO(modelJSON, modelWeights)).catch((e)=>{
+//       console.log("[LOADING ERROR] info:",e)});
+   
+
+//       const zeros = tf.zeros([1, 224, 224, 3]);
+      
+// // model.predict(zeros).print();
+// this.setState({ model })
+//       this.setState({
+//         useModel: model,
+//         isUSEReady: true,
+//     });
+    
+  
+     
+    
+
+//  //print out model.json and modelWeights
+//  console.log("modelWeights: " + modelWeights);
+//  console.log("modelJson: "+modelJSON);
+//  Object.keys(modelJSON).forEach(function (item) {
+//    console.log(item); // key
+//    console.log(modelJSON[item]);
+//  });
+
+//  this.setState({
+//   useModel: model,
+//   isUSEReady: true
+// });
+//    }
+//     //  model.summary();
+     
+//     //  console.log(model.calculateLosses())
+    
+     
+ 
+
+   
+render(){
+     return (
+
+        <Anime/>
+
+     );
+     }
+    }
   
 
-  
-    setTimeout(() => {
-      setLoading(true);
-    }, 3000);
-  return (
-    <AnimatedSplash
-        translucent={true}
-        isLoaded={loading}
-        logoImage={require("../assets/images/fra.png")}
-        backgroundColor={"#FEF9B0"}
-        logoHeight={250}
-        logoWidth={150}
-      >
-    <View style={{color: 'red'}}>
-      <View>
-      <AppBar title="AMSHAM"/>
-      </View>
-      <Scan/>
-      <StatusBar style='auto'/>
-    </View>
-    </AnimatedSplash>
-  );
-}
+export default App
+

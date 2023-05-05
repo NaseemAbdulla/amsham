@@ -2,14 +2,17 @@ import * as React from "react";
 import { StyleSheet, Text, View,Button,TouchableOpacity,Image ,Link,TextInput} from 'react-native';
 import ImageViewer from "../src/components/ImageViewer";
 import { useAppCont } from "../src/context/FirstContext";
-const PlaceholderImage = require('../assets/images/background-image.png');
 
 
-export default function Display({children}){
+
+function Displays({children}){
     const {selectedImage}=useAppCont();
+
+ 
+
 return(
-<View alignItems='center' style={{marginTop:130}} >
-<ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage}/>
+<View alignItems='center' style={{marginTop:50}} >
+<ImageViewer placeholderImageSource={null} selectedImage={selectedImage}/>
 
 <View style={{margin:10}}>
           <TouchableOpacity >
@@ -26,19 +29,22 @@ return(
       numberOfLines={10}
       multiline={true}
     />
-  </View>
+  </View> 
+  
+
   <TouchableOpacity >
           <Button color='blue' margin={50} title="Translate" size={40} onPress={()=>alert("Translated")}/>
           </TouchableOpacity>
-  <View style={styles.textAreaContainer} >
-    <TextInput
+  <View >
+    
+    {/* <TextInput
       style={styles.textArea}
       underlineColorAndroid="transparent"
       placeholder="Type something"
       placeholderTextColor="grey"
       numberOfLines={10}
       multiline={true}
-    />
+    /> */}
   </View>
 </View>
 );
@@ -56,3 +62,4 @@ const styles = StyleSheet.create({
       justifyContent: "flex-start"
     }
   })
+  export default Displays
