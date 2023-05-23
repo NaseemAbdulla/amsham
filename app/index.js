@@ -1,13 +1,6 @@
 import React,{ useState } from 'react'
-import { Text, View } from 'react-native'
-import * as tf from '@tensorflow/tfjs'
-import { bundleResourceIO } from '@tensorflow/tfjs-react-native';
 import { useAppCont } from "../src/context/FirstContext";
-import Anime from './splash';
-import { Asset } from 'expo-asset';
-import Scan from './scan';
-import Displays from './display';
-const BACKEND_CONFIG = 'cpu';
+import Anime from './splash'
 
 class App extends React.Component {
 

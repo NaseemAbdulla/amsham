@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@craftzdog/react-native-buffer": "^6.0.5",
     "@expo/metro-config": "^0.7.1",
     "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^0.17.2",
@@ -16,10 +17,10 @@
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-material/core": "^1.3.7",
     "@react-navigation/native": "^6.1.3",
-    "@tensorflow/tfjs": "^4.4.0",
-    "@tensorflow/tfjs-react-native": "^0.8.0",
+    "axios": "^1.4.0",
     "eas-cli": "^3.7.2",
     "expo": "~47.0.0",
+    "expo-asset": "~8.7.0",
     "expo-camera": "~13.1.0",
     "expo-constants": "~14.0.2",
     "expo-document-picker": "~11.0.1",
@@ -29,6 +30,7 @@
     "expo-media-library": "^15.0.0",
     "expo-router": "^1.0.0-rc6",
     "expo-status-bar": "~1.4.2",
+    "html-entities": "^2.3.3",
     "metro-config": "^0.76.0",
     "patch-package": "^6.5.1",
     "react": "18.1.0",
@@ -42,8 +44,7 @@
     "react-native-screens": "~3.18.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-web": "~0.18.9",
-    "react-navigation-stack": "^2.10.4",
-    "expo-asset": "~8.7.0"
+    "react-navigation-stack": "^2.10.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
